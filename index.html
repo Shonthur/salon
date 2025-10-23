@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Glow Beauty Salon</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Montserrat', sans-serif;
+    }
+    body {
+      background: #fffafc;
+      color: #333;
+      line-height: 1.6;
+      overflow-x: hidden;
+    
+    }
+    header {
+      background: linear-gradient(to right, #ff69b4, #ff1493);
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      animation: slideDown 1s ease-out;
+    }
+    header h1 {
+      font-size: 2.5rem;
+    }
+    nav {
+      margin-top: 1rem;
+    }
+    nav a {
+      color: white;
+      margin: 0 1rem;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #ffd6e7;
+    }
+    section {
+      padding: 2rem 1rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      background: #ffe6f0;
+      padding: 3rem 1rem;
+      border-radius: 20px;
+      margin: 2rem 0;
+      animation: fadeIn 1.5s ease-in;
+    }
+    .hero h2 {
+      font-size: 2rem;
+      color: #c71585;
+    }
+    .hero p {
+      margin: 1rem 0;
+    }
+    .hero button {
+      padding: 0.8rem 2rem;
+      background: #ff1493;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+      animation: bounce 2s infinite;
+    }
+    .hero button:hover {
+      background: #e60073;
+    }
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+    .service-card {
+      background: white;
+      border-radius: 15px;
+      padding: 1rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .service-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+    .service-card h3 {
+      color: #c71585;
+      margin-bottom: 0.5rem;
+    }
+    .gallery {
+      display: flex;
+      overflow-x: auto;
+      gap: 1rem;
+      padding: 1rem 0;
+      scroll-behavior: smooth;
+    }
+    .gallery::-webkit-scrollbar {
+      height: 8px;
+    }
+    .gallery::-webkit-scrollbar-thumb {
+      background: #ff69b4;
+      border-radius: 4px;
+    }
+    .gallery img {
+      width: 300px;
+      height: 200px;
+      border-radius: 15px;
+      object-fit: center;
+      transition: transform 0.3s ease;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+    .testimonial {
+      background: #ffe6f0;
+      padding: 2rem;
+      border-radius: 15px;
+      margin: 2rem 0;
+      animation: fadeInUp 1.5s ease;
+    }
+    .testimonial h2 {
+      color: #c71585;
+      margin-bottom: 1rem;
+    }
+    .testimonial p {
+      font-style: italic;
+      color: #555;
+    }
+  .contact {
+  text-align: center;
+  padding: 50px 20px;
+  background-color: #fff;
+}
+
+.contact h2 {
+  font-size: 2em;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.contact p {
+  font-size: 1.1em;
+  color: #777;
+  margin-bottom: 30px;
+}
+
+.contact-icons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  
+}
+.contact-icons .icon {
+  font-size: 25px;
+  padding: 0;
+  border-radius: 50%;
+  height: 60px;
+  width: 60px;
+  background-color: #f4f4f4;
+  color: #333;
+  transition: 0.3s;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.contact-icons .icon:hover {
+  transform: scale(1.1);
+
+  color: white;
+}
+
+/* Custom colors for specific icons */
+.icon.whatsapp { color: #25D366; }
+.icon.whatsapp:hover { background-color: #25D366; }
+.icon.instagram { color: #E1306C; }
+.icon.instagram:hover { background-color: #E1306C; }
+.icon.facebook:hover { background-color: #3b5998; } 
+.icon.facebook { color: #3b5998; }
+.icon.email { color: #D44638; }
+.icon.email:hover { background-color: #D44638; }
+.icon.phone:hover { background-color: #007BFF; }
+.icon.phone { color: #007BFF; }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #ff69b4;
+      color: white;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    @keyframes fadeInDown {
+      from {opacity: 0; transform: translateY(-20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    @keyframes fadeInUp {
+      from {opacity: 0; transform: translateY(40px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    @keyframes slideDown {
+      from {transform: translateY(-100%); opacity: 0;}
+      to {transform: translateY(0); opacity: 1;}
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+      .hero h2 {
+        font-size: 1.5rem;
+      }
+    }
+
+    .order-home {
+  background: linear-gradient(135deg, #ffe6f0 60%, #fffafc 100%);
+  border-radius: 20px;
+  padding: 2rem 1rem;
+  margin: 2rem auto;
+  max-width: 500px;
+  box-shadow: 0 8px 24px rgba(199,21,133,0.08);
+  text-align: center;
+  animation: fadeInUp 1.2s;
+  position: relative;
+}
+.order-home h2 {
+  color: #c71585;
+  margin-bottom: 1rem;
+  font-size: 1.6rem;
+  animation: fadeInDown 1s;
+}
+.order-home label {
+  display: block;
+  margin: 1rem 0 0.5rem 0;
+  font-weight: bold;
+  color: #c71585;
+  text-align: left;
+}
+.order-home input, .order-home select, .order-home textarea {
+  width: 100%;
+  padding: 0.7rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ffd6e7;
+  font-size: 1rem;
+  background: #fff;
+  transition: border 0.3s;
+}
+.order-home input:focus, .order-home select:focus, .order-home textarea:focus {
+  border: 1.5px solid #c71585;
+  outline: none;
+}
+.order-home .location-btn {
+  background: #ff69b4;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 0.7rem 2rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  transition: background 0.3s;
+  animation: pulse 2s infinite;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.order-home .location-btn:hover {
+  background: #c71585;
+}
+.order-home .submit-btn {
+  background: #c71585;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 0.7rem 2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+  margin-top: 1rem;
+  animation: bounce 2s infinite;
+}
+.order-home .submit-btn:hover {
+  background: #ff69b4;
+}
+.order-home .success-message {
+  color: #22c55e;
+  font-weight: bold;
+  margin-top: 1rem;
+  animation: fadeIn 1s;
+}
+.order-home .error-message {
+  color: #e1306c;
+  font-weight: bold;
+  margin-top: 1rem;
+  animation: fadeIn 1s;
+}
+@keyframes fadeInUp {
+  from {opacity: 0; transform: translateY(40px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+@keyframes fadeInDown {
+  from {opacity: 0; transform: translateY(-20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(255,105,180,0.7);}
+  70% { box-shadow: 0 0 0 10px rgba(255,105,180,0);}
+  100% { box-shadow: 0 0 0 0 rgba(255,105,180,0);}
+}
+@media (max-width: 600px) {
+  .order-home {
+    padding: 1rem 0.5rem;
+    max-width: 98vw;
+  }
+}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Glow Beauty Salon</h1>
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#testimonial">Testimonials</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>Enhance Your Beauty With Style</h2>
+    <p>Professional salon services for hair, nails, skin & makeup in a relaxing environment.</p>
+    <button onclick="alert('Booking coming soon!')">Book Now</button>
+  </section>
+
+  <section class="services" id="services">
+    <div class="service-card">
+      <h3>Hair Styling</h3>
+      <p>Trendy cuts, coloring, braids & treatments.</p>
+    </div>
+    <div class="service-card">
+      <h3>Nail Art</h3>
+      <p>Manicure, pedicure, gel polish & creative nail art.</p>
+    </div>
+    <div class="service-card">
+      <h3>Facials</h3>
+      <p>Cleansing, exfoliation, steaming & skincare.</p>
+    </div>
+    <div class="service-card">
+      <h3>Makeup</h3>
+      <p>Flawless makeup for weddings, shoots & events.</p>
+    </div>
+  </section>
+
+  <section class="gallery" id="gallery">
+    <img src="work1.jpg" alt="Salon Work 1">
+    <img src="work2.jpg" alt="Salon Work 2">
+    <img src="work3.jpg" alt="Salon Work 3">
+    <img src="work4.jpg" alt="Salon Work 4">
+  </section>
+
+ <section class="testimonial" id="testimonial">
+  <h2>What Our Clients Say</h2>
+
+  <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; align-items: center;">
+    <div style="background: #fff; padding: 1rem; border-radius: 15px; max-width: 280px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+      <img src="her3.jpg" alt="Jane D." style="width: 80px; height: 80px; object-fit: cover; border-radius: 50%; margin-bottom: 0.8rem;">
+      <p style="font-style: italic;">"Absolutely love the service! I always leave feeling beautiful and refreshed."</p>
+      <strong style="display: block; margin-top: 0.5rem; color: #c71585;">– Jane D.</strong>
+    </div>
+
+    <div style="background: #fff; padding: 1rem; border-radius: 15px; max-width: 280px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+      <img src="her.jpg" alt="Linda M." style="width: 80px; height: 80px; object-fit: cover; border-radius: 50%; margin-bottom: 0.8rem;">
+      <p style="font-style: italic;">"Professional, kind, and talented. My nails and hair are always on point!"</p>
+      <strong style="display: block; margin-top: 0.5rem; color: #c71585;">– Linda M.</strong>
+    </div>
+
+    <div style="background: #fff; padding: 1rem; border-radius: 15px; max-width: 280px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+      <img src="her1.jpg" alt="Sophia T." style="width: 80px; height: 80px; object-fit: cover; border-radius: 50%; margin-bottom: 0.8rem;">
+      <p style="font-style: italic;">"The facial treatment changed my skin for the better. 10/10 experience!"</p>
+      <strong style="display: block; margin-top: 0.5rem; color: #c71585;">– Sophia T.</strong>
+    </div>
+  </div>
+</section>
+
+
+  <section class="order-home" id="order-home">
+  <h2>Order Home Service</h2>
+  <form id="homeServiceForm" autocomplete="off">
+    <label for="name">Your Name</label>
+    <input type="text" id="name" name="name" required placeholder="Enter your name" />
+
+    <label for="phone">Phone Number</label>
+    <input type="tel" id="phone" name="phone" required placeholder="Enter your phone number" />
+
+    <label for="service">Select Service</label>
+    <select id="service" name="service" required>
+      <option value="">-- Choose a service --</option>
+      <option value="Hair Styling">Hair Styling</option>
+      <option value="Nail Art">Nail Art</option>
+      <option value="Facials">Facials</option>
+      <option value="Makeup">Makeup</option>
+    </select>
+
+    <label for="address">Your Address</label>
+    <textarea id="address" name="address" rows="2" required placeholder="Enter your address"></textarea>
+
+    <button type="button" class="location-btn" id="shareLocationBtn">
+      <i class="fas fa-map-marker-alt"></i> Share Location
+    </button>
+    <input type="hidden" id="location" name="location" />
+
+    <button type="submit" class="submit-btn">Order Now</button>
+    <div id="orderMessage"></div>
+  </form>
+</section>
+
+ <section class="contact" id="contact">
+  <h2>Contact Us</h2>
+  <p>We’d love to hear from you. Reach out anytime!</p>
+
+  <div class="contact-icons">
+    <a href="https://wa.me/1234567890" target="_blank" class="icon whatsapp"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://www.instagram.com/yourprofile" target="_blank" class="icon instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.facebook.com/yourprofile" target="_blank" class="icon facebook"><i class="fab fa-facebook-f"></i></a>
+    <a href="mailto:youremail@example.com" class="icon email"><i class="fas fa-envelope"></i></a>
+    <a href="tel:+256 745 652 778" class="icon phone"><i class="fas fa-phone-alt"></i></a>
+  </div>
+</section>
+
+<script>
+  // Home Service Form logic
+  const form = document.getElementById('homeServiceForm');
+  const shareLocationBtn = document.getElementById('shareLocationBtn');
+  const locationInput = document.getElementById('location');
+  const orderMessage = document.getElementById('orderMessage');
+
+  shareLocationBtn.addEventListener('click', function() {
+    if (!navigator.geolocation) {
+      orderMessage.innerHTML = '<span class="error-message">Geolocation is not supported by your browser.</span>';
+      return;
+    }
+    shareLocationBtn.disabled = true;
+    shareLocationBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Getting location...';
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const lat = position.coords.latitude;
+        const lng = position.coords.longitude;
+        locationInput.value = `${lat},${lng}`;
+        shareLocationBtn.innerHTML = '<i class="fas fa-map-marker-alt"></i> Location Shared!';
+        shareLocationBtn.style.background = "#22c55e";
+        orderMessage.innerHTML = '<span class="success-message">Location shared successfully!</span>';
+      },
+      (error) => {
+        shareLocationBtn.disabled = false;
+        shareLocationBtn.innerHTML = '<i class="fas fa-map-marker-alt"></i> Share Location';
+        orderMessage.innerHTML = '<span class="error-message">Unable to get location. Please enter your address manually.</span>';
+      }
+    );
+  });
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    orderMessage.innerHTML = '';
+    // Simulate sending order (replace with real backend logic)
+    setTimeout(() => {
+      orderMessage.innerHTML = '<span class="success-message">Your home service order has been received! We will contact you soon.</span>';
+      form.reset();
+      shareLocationBtn.innerHTML = '<i class="fas fa-map-marker-alt"></i> Share Location';
+      shareLocationBtn.style.background = "#ff69b4";
+      shareLocationBtn.disabled = false;
+    }, 1200);
+  });
+  </script>
+
+  <footer>
+    <p>&copy; 2025 Glow Beauty Salon. All rights reserved.</p>
+  </footer>
+</body>
+</html>
